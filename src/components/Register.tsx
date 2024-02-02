@@ -26,7 +26,9 @@ export default function Register() {
       confirmPassword: confirmPassword,
     })
       .then((data) => {
-        if (data?.data?.username) {
+        console.log(data);
+        
+        if (data?.data?.user?.username) {
           setUser(data.data);
           router.push("/details");
         }

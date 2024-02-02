@@ -14,7 +14,7 @@ export default function Login() {
 
   const submitForm = (e: any) => {
 
-    
+
 
     e.preventDefault();
     // with axios
@@ -22,7 +22,8 @@ export default function Login() {
       username: username,
       password: password,
     }).then((data) => {
-      if(data?.data?.username){
+      console.log(data);
+      if(data?.data?.user?.username){
         setUser(data.data);
         router.push('/dashboard');
       }
