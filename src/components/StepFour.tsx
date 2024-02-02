@@ -5,17 +5,17 @@ import { ChangeEvent } from 'react';
 interface StepFourProps {
   formData: {
     bloodPressure: {
-      systolic: number;
-      diastolic: number;
+      systolic: number | undefined;
+      diastolic: number | undefined;
     };
     cholesterolLevel: {
-      total: number;
-      hdl: number;
-      ldl: number;
+      total: number | undefined;
+      hdl: number | undefined;
+      ldl: number | undefined;
     };
     bloodSugarLevel: {
-      fasting: number;
-      postPrandial: number;
+      fasting: number | undefined;
+      postPrandial: number | undefined;
     };
   };
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;

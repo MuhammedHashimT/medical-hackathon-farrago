@@ -15,40 +15,47 @@ interface StepThreeProps {
 }
 
 const StepThree: React.FC<StepThreeProps> = ({ formData, handleChange, handleNext, handlePrevious }) => {
+  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value, checked } = e.target;
+    if (checked) {
+      // Add the value to the array if checked
+      handleChange({ target: { name, value: [...(formData as any)[name], value] } } as any);
+    } else {
+      // Remove the value from the array if unchecked
+      handleChange({ target: { name, value: (formData as any)[name].filter((item : any) => item !== value) } } as ChangeEvent<HTMLSelectElement>);
+    }
+  };
+
   return (
     <div>
       <h2>Step 3: Medical Details</h2>
-      <select multiple name="allergies" value={formData.allergies} onChange={handleChange}>
-        <option value="">Select Allergies</option>
-        <option value="peanuts">Peanuts</option>
-        <option value="penicillin">Penicillin</option>
-        <option value="shellfish">Shellfish</option>
-        <option value="latex">Latex</option>
-        <option value="pollen">Pollen</option>
-        <option value="dust">Dust</option>
-        <option value="pets">Pets</option>
-        <option value="other">Other</option>
-      </select>
-      <select multiple name="medications" value={formData.medications} onChange={handleChange}>
-        <option value="">Select Medications</option>
-        <option value="aspirin">Aspirin</option>
-        <option value="ibuprofen">Ibuprofen</option>
-        <option value="acetaminophen">Acetaminophen</option>
-        <option value="antibiotics">Antibiotics</option>
-        <option value="antidepressants">Antidepressants</option>
-        <option value="insulin">Insulin</option>
-        <option value="other">Other</option>
-      </select>
-      <select multiple name="surgeries" value={formData.surgeries} onChange={handleChange}>
-        <option value="">Select Surgeries</option>
-        <option value="appendectomy">Appendectomy</option>
-        <option value="tonsillectomy">Tonsillectomy</option>
-        <option value="hernia repair">Hernia Repair</option>
-        <option value="knee replacement">Knee Replacement</option>
-        <option value="hip replacement">Hip Replacement</option>
-        <option value="lasik surgery">Lasik Surgery</option>
-        <option value="other">Other</option>
-      </select>
+      <div>
+        <h3>Allergies</h3>
+        {['peanuts', 'penicillin', 'shellfish', 'latex', 'pollen', 'dust', 'pets', 'other'].map((allergy, index) => (
+          <label key={index}>
+            <input type="checkbox" name="allergies" value={allergy} checked={formData.allergies.includes(allergy)} onChange={handleCheckboxChange} />
+            {allergy}
+          </label>
+        ))}
+      </div>
+      <div>
+        <h3>Medications</h3>
+        {['aspirin', 'ibuprofen', 'acetaminophen', 'antibiotics', 'antidepressants', 'insulin', 'other'].map((medication, index) => (
+          <label key={index}>
+            <input type="checkbox" name="medications" value={medication} checked={formData.medications.includes(medication)} onChange={handleCheckboxChange} />
+            {medication}
+          </label>
+        ))}
+      </div>
+      <div>
+        <h3>Surgeries</h3>
+        {['appendectomy', 'tonsillectomy', 'hernia repair', 'knee replacement', 'hip replacement', 'lasik surgery', 'other'].map((surgery, index) => (
+          <label key={index}>
+            <input type="checkbox" name="surgeries" value={surgery} checked={formData.surgeries.includes(surgery)} onChange={handleCheckboxChange} />
+            {surgery}
+          </label>
+        ))}
+      </div>
       <textarea name="medicalHistory" value={formData.medicalHistory} onChange={handleChange} placeholder="Medical History"></textarea>
       <button onClick={handlePrevious}>Previous</button>
       <button onClick={handleNext}>Next</button>

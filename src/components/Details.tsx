@@ -24,17 +24,17 @@ const Details: React.FC = () => {
     surgeries: [],
     medicalHistory: '',
     bloodPressure: {
-      systolic: 0,
-      diastolic:0
+      systolic: undefined,
+      diastolic:undefined
     },
     cholesterolLevel: {
-      total:0,
-      hdl:0,
-      ldl:0
+      total:undefined,
+      hdl:undefined,
+      ldl:undefined
     },
     bloodSugarLevel : {
-      fasting:0,
-      postPrandial:0
+      fasting:undefined,
+      postPrandial:undefined
     }
   });
 
@@ -46,6 +46,20 @@ const Details: React.FC = () => {
     }));
   };
 
+  const handleFourChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    const [parentKey, childKey] = name.split('.'); // Split the nested key
+    
+    setFormData(prevState => ({
+      ...prevState,
+      [parentKey]: {
+        ...(prevState as any)[parentKey],
+        [childKey]: parseInt(value) // Update the child key with the new value
+      }
+    }));
+  };
+
+  
   const handleNext = () => {
     setStep(step + 1);
   };
@@ -71,7 +85,7 @@ const Details: React.FC = () => {
         <StepThree formData={formData} handleChange={handleChange} handleNext={handleNext} handlePrevious={handlePrevious} />
       )}
       {step === 4 && (
-        <StepFour formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} handlePrevious={handlePrevious} />
+        <StepFour formData={formData} handleChange={handleFourChange} handleSubmit={handleSubmit} handlePrevious={handlePrevious} />
       )}
     </div>
   );
