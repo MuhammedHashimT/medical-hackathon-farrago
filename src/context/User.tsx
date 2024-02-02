@@ -34,13 +34,17 @@ export const UserContextProvider = ({ children }: any) => {
     const [user, setUser] = useState<DataType | null>({} as DataType || null);
 
     useEffect(() => {
-       Axios.get('/users/checkLoggedIn').then((data) => {
+        console.log(localStorage.getItem('token'));
+        
+       Axios.get('/users/checkLoggedIn',{headers:{
+        Authorization: `${localStorage.getItem('token')}`
+       }}).then((data) => {
         console.log(data);
         if(data?.data?.username){
             setUser(data.data);
         }
        }).catch((err) => {
-              console.log(err);
+              console.log(err.response);
          }
          );
     }, []);
