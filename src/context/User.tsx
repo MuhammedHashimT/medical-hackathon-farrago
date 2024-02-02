@@ -40,8 +40,8 @@ export const UserContextProvider = ({ children }: any) => {
     })
       .then((data) => {
         console.log(data);
-        if (data?.data?.username) {
-          setUser(data.data);
+        if (data?.data?.user) {
+          setUser(data.data.user);
         }
       })
       .catch((err) => {
