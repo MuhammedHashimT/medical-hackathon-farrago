@@ -5,10 +5,12 @@ import StepOne from '@/components/StepOne';
 import StepTwo from '@/components/StepTwo';
 import StepThree from '@/components/StepThree';
 import StepFour from '@/components/StepFour';
+import Axios from '@/utils/Axios';
 
 const Details: React.FC = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
+    token: '',
     address: '',
     email: '',
     phone: '',
@@ -70,7 +72,17 @@ const Details: React.FC = () => {
 
   const handleSubmit = () => {
     // Handle form submission here
+
     console.log(formData);
+    const token = localStorage.getItem('token')
+    if (token) {
+      formData.token = token;
+    }
+    Axios.post('/profiles', formData).then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+    });
   };
 
   return (
