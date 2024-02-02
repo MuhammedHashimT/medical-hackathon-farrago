@@ -1,23 +1,27 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        blurblue: "url('/img/blur-blue')",
+      },
       colors: {
-        primary: '#0F5533',
-        light: '#117947',
-        dark: '#083922',
-        smoke: '#D9EEE4',
-        smoker: '#cae5d8',
+        primary: "#1349a4",
+        light: "#2566d1",
+        lighter: "#3981f8",
+        dark: "#082d6a",
+        smoke: "#a9c9ff",
+        smoker: "#cae5d8",
       },
     },
   },
   plugins: [],
-}
+};
 
-export default config
+export default config;
