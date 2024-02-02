@@ -6,8 +6,8 @@ import { UserContextProvider } from "@/context/User";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Excelens",
-  description: "Excelens is a platform medical students to learn and practice their skills",
+  title: "MedCure",
+  description: "MedCure is a platform medical students to learn and practice their skills",
 };
 
 export default function RootLayout({
