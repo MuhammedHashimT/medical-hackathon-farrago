@@ -43,7 +43,7 @@ export default function Login() {
         onSubmit={submitForm}
         className="bg-white flex flex-col h-fit w-96 p-10 rounded-xl gap-3 items-center"
       >
-        <div className="w-20">
+        <div className="w-16">
           <img
             onClick={() => {
               router.push("/");
@@ -54,7 +54,7 @@ export default function Login() {
           />
         </div>
         <h1 className="text-center font-semibold text-2xl">
-          Login to <span className="font-extrabold text-primary">Excelens</span>
+          Login to <span className="font-extrabold text-primary">MedCure</span>
         </h1>
         <p>{error && <span className="text-red-500">{error}</span>}</p>
         <input

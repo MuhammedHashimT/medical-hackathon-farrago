@@ -59,7 +59,7 @@ export default function Register() {
         </div>
         <h1 className="text-center font-semibold text-2xl">
           Register to{" "}
-          <span className="font-extrabold text-primary">Excelens</span>
+          <span className="font-extrabold text-primary">MedCure</span>
         </h1>
         <p>{error && <span className="text-red-500">{error}</span>}</p>
 
