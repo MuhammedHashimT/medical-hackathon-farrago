@@ -39,7 +39,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex w-screen h-screen bg-smoke items-center justify-center bg">
+    <div className="flex w-screen h-screen bg-blurblue items-center justify-center bg">
       <form
         onSubmit={submitForm}
         className="bg-white flex flex-col h-fit w-96 p-10 rounded-xl gap-3 items-center"
