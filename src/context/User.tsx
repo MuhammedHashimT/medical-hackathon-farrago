@@ -35,12 +35,8 @@ export const UserContextProvider = ({ children }: any) => {
   const [user, setUser] = useState<DataType | null>(({} as DataType) || null);
 
   useEffect(() => {
-    const cookie = Cookies.get("token");
-
-    Axios.get("/users/checkLoggedIn", {
-      headers: {
-        Authorization: `${cookie}`,
-      },
+    Axios.post("/users/checkLoggedIn", {
+      token: localStorage.getItem("token"),
     })
       .then((data) => {
         console.log(data);
