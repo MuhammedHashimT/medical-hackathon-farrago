@@ -2,42 +2,45 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-// import Axios from "@/utils/Axios";
-// import { useUserContext } from "@/context/User";
+import Axios from "@/utils/Axios";
+import { useUserContext } from "@/context/User";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error,setError] = useState("");
-//   const { setUser , user } = useUserContext();
+  const { setUser , user } = useUserContext();
   const router = useRouter();
 
-//   const submitForm = (e: any) => {
-//     e.preventDefault();
-//     // with axios
-//     Axios.post('users/login', {
-//       username: username,
-//       password: password,
-//     }).then((data) => {
-//       if(data?.data?.username){
-//         setUser(data.data);
-//         router.push('/profile');
-//       }
-//     }).catch((err) => {
-//       setError("Invalid username or password");
-//       setTimeout(() => {
-//         setError("");
-//       }, 5000
-//       )
-//     }
-//     );
+  const submitForm = (e: any) => {
 
-//   };
+    
+
+    e.preventDefault();
+    // with axios
+    Axios.post('users/login', {
+      username: username,
+      password: password,
+    }).then((data) => {
+      if(data?.data?.username){
+        setUser(data.data);
+        router.push('/dashboard');
+      }
+    }).catch((err) => {
+      setError("Invalid username or password");
+      setTimeout(() => {
+        setError("");
+      }, 5000
+      )
+    }
+    );
+
+  };
 
   return (
     <div className="flex w-screen h-screen bg-smoke items-center justify-center bg">
       <form 
-      // onSubmit={  submitForm } 
+      onSubmit={  submitForm } 
         className="bg-white flex flex-col h-fit w-96 p-10 rounded-xl gap-3 items-center">
         <div className='w-20'>
           <img onClick={()=>{
