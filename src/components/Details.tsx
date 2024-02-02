@@ -81,7 +81,7 @@ const Details: React.FC = () => {
     Axios.post('/profiles', formData).then(response => {
       console.log(response);
     }).catch(error => {
-      console.log(error);
+      console.log(error.response);
     });
   };
 
