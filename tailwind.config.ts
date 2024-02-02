@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        blurblue: "url('/img/blur-blue')",
+        blurblue: "url('/img/blur-blue.jpg')",
       },
       colors: {
         primary: "#1349a4",

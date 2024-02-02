@@ -42,12 +42,12 @@ export default function Register() {
   };
 
   return (
-    <div className="flex w-screen h-screen bg-smoke items-center justify-center bg">
+    <div className="flex w-screen bg-blurblue h-screen bg-smoke items-center justify-center bg">
       <form
         onSubmit={submitForm}
         className="bg-white flex flex-col h-fit w-96 p-10 rounded-xl gap-3 items-center"
       >
-        <div className="w-20">
+        <div className="w-16">
           <img
             onClick={() => {
               router.push("/");

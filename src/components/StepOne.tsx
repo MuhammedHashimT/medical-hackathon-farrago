@@ -16,8 +16,8 @@ interface StepOneProps {
 
 const StepOne: React.FC<StepOneProps> = ({ formData, handleChange, handleNext }) => {
   return (
-    <div>
-      <h2>Step 1: Personal Details</h2>
+    <div className='bg-blurblue h-screen bg-contain'>
+      <h2 className='text-primary font-extrabold'>Personal Details</h2>
       <input type="text" name="address" value={formData.address} onChange={handleChange} placeholder="Address" />
       <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
       <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone" />
