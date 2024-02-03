@@ -1,7 +1,5 @@
 "use client";
 import React, { useState } from "react";
-
-// Define predefined medical questions and answers
 const medicalQuestionsAndAnswers: { [key: string]: string[] } = {
   "Do you have any allergies?": ["Peanuts", "Shellfish", "None"],
   "Are you currently taking any medications?": [
@@ -81,7 +79,15 @@ const ChatBot: React.FC = () => {
 
         case "Do you have any existing medical conditions?":
           if (response !== "None") {
-            solution += " Consult your healthcare provider regularly.";
+            if (response === "Hypertension") {
+              requiredMedications.push("Antihypertensive medication");
+              solution +=
+                " Monitor blood pressure regularly and follow a low-sodium diet.";
+            } else if (response === "Diabetes") {
+              requiredMedications.push("Insulin or oral hypoglycemic agents");
+              solution +=
+                " Monitor blood sugar levels regularly and follow a diabetic diet.";
+            }
           }
           break;
 
@@ -94,6 +100,7 @@ const ChatBot: React.FC = () => {
     // Check if there are required medications or additional medical advice
     if (
       requiredMedications.length > 0 ||
+      solution.includes("Monitor") ||
       solution.includes("Consult your healthcare provider")
     ) {
       healthCondition = "Requires Attention";
@@ -108,18 +115,35 @@ const ChatBot: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-green-200">
-      <div className="bg-white p-8 rounded-md shadow-md">
+    <div className="flex justify-center items-center h-screen bg-blurblue">
+      <div className="bg-white flex flex-col h-fit w-[400px] p-10 rounded-xl gap-3 items-center">
         {finalSolution ? (
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Final Solution</h2>
+          <div className="">
+              <div className="flex justify-center flex-col items-center mb-6">
+            <div className="w-10 flex">
+              <img className="object-contain cursor-pointer"
+                src="/logo/logo-only.png"
+                alt="Logo"
+              />
+            </div>
+            <h1 className="text-center font-extrabold text-2xl">
+              Final <span className=" text-primary">Solution</span>
+            </h1></div>
+            {/* <h2 className="text-2xl font-bold mb-4">Final Solution</h2> */}
             <div>
-              <p>Health Condition: {finalSolution["Health Condition"]}</p>
               <p>
-                Required Medications:{" "}
+                {" "}
+                <div className="font-bold">Health Condition: </div>{" "}
+                {finalSolution["Health Condition"]}
+              </p>
+              <p>
+                <div className="font-bold">Required Medications:</div>
                 {finalSolution["Required Medications"].join(", ")}
               </p>
-              <p>Solution: {finalSolution["Solution"]}</p>
+              <p>
+                <div className="font-bold">Solution:</div>{" "}
+                {finalSolution["Solution"]}
+              </p>
             </div>
           </div>
         ) : (
@@ -130,7 +154,7 @@ const ChatBot: React.FC = () => {
                 (answer, index) => (
                   <li key={index} className="mb-2 ">
                     <button
-                      className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none"
+                      className="bg-primary text-white hover:border-smoke border-primary border-2  px-3 py-2 cursor-pointer hover:bg-light rounded-xl transition-colors duration-100"
                       onClick={() => handleAnswerSelection(answer)}
                     >
                       {answer}
