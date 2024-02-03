@@ -48,10 +48,10 @@ To get started with the Hospital Management Website, follow these steps:
 
 The website should now be accessible at http://localhost:3000.
 
-**Usage**
+### Usage
 [Provide Usage Instructions Here]
 
-**Contributing**
+### Contributing
 We welcome contributions from the community to help improve and enhance the Hospital Management Website. If you're interested in contributing, please follow these guidelines:
 
 Fork the repository and create a new branch for your feature or bug fix.
@@ -59,10 +59,10 @@ Ensure your code adheres to the project's coding standards and conventions.
 Write clear and concise commit messages and pull request descriptions.
 Test your changes thoroughly and provide documentation as necessary.
 Submit a pull request, and we'll review your changes as soon as possible.
-**License**
+### License
 This project is licensed under the MIT License, which means you're free to use, modify, and distribute the code as you see fit. See the LICENSE file for more details.
 
-**Contact**
+### Contact
 For questions, feedback, or inquiries about the Hospital Management Website project, please contact Your Name.
 
 
