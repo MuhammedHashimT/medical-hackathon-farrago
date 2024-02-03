@@ -58,62 +58,33 @@ function EditPage({ params, searchParams }: any) {
         <h1 className="text-center font-semibold text-2xl">
           Edit <span className="font-extrabold text-primary">Details</span>
         </h1>
-        <form onSubmit={handleSubmit}>
-  <div className="grid grid-cols-2 gap-3">
-    {Object.entries(formData).map(([key, value]) => (
-      <div key={key}>
-        {/* Skip rendering properties of "userId" object */}
-        {key !== "userId" && key !== "_id" && (
-          <>
-            <label htmlFor={key} className="text-gray-700 font-bold mb-2">
+      <form onSubmit={handleSubmit}>
+        <div className="grid grid-cols-2 gap-3">
+        {Object.entries(formData).map(([key, value]) => 
+        (
+          <div key={key}>
+            <label htmlFor={key} className=" text-gray-700 font-bold mb-2">
               {key.charAt(0).toUpperCase() + key.slice(1)}:
             </label>
-            {/* Check if the value is an object */}
-            {typeof value === "object" ? (
-              // If it's an object, map over its entries
-              <div className="flex">
-                
-             { Object.entries(value as any).map(([k, v]) => (
-                <div className="flex" key={k}>
-                  <label htmlFor={k} className="text-gray-700 font-bold mb-2">
-                    {k.charAt(0).toUpperCase() + k.slice(1)}:
-                  </label>
-                  {/* Convert the object value to a string */}
-                  <input
-                    type="text"
-                    name={k}
-                    value={String(v)} // Convert object value to string
-                    onChange={handleChange}
-                    className="px-3 py-2 border rounded-lg w-full"
-                  />
-                </div>
-              ))
-}
-              </div>
-            ) : (
-              // If it's not an object, render a regular input
-              <input
-                type="text"
-                name={key}
-                value={String(value)} // Convert value to string
-                onChange={handleChange}
-                className="px-3 py-2 border rounded-lg w-full"
-              />
-            )}
-          </>
-        )}
-      </div>
-    ))}
-  </div>
-  <button
-    type="submit"
-    className="hover:bg-light mt-4 w-full border-primary border rounded-lg text-white px-3 py-2 bg-primary"
-  >
-    Save Changes
-  </button>
-</form>
-
-
+            <input
+              type="text"
+              id={key}
+              name={key}
+              placeholder={"Change "+ key.charAt(0).toUpperCase() + key.slice(1)}
+              // value={`${value}`}
+              onChange={handleChange}
+              className="border rounded-md p-2 w-full"
+            />
+          </div>
+        ))
+          }</div>
+        <button
+          type="submit"
+          className="hover:bg-light mt-4 w-full border-primary border rounded-lg text-white px-3 py-2 bg-primary"
+        >
+          Save Changes
+        </button>
+      </form>
     </div>
     </div>
   );
