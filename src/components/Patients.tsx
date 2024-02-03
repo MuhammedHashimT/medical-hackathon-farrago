@@ -6,6 +6,7 @@ import Patient from "./Patient";
 const Patients = () => {
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     Axios.get("/profiles")
@@ -19,13 +20,28 @@ const Patients = () => {
       });
   }, []);
 
+  const handleSearch = (e: any) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredPatients = patients.filter((patient: any) => {
+    const fullName = `${patient?.userId.firstName} ${patient.userId.lastName}`;
+    return fullName.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
   return (
     <div>
       <p>All Patients</p>
+      <input
+        type="text"
+        placeholder="Search Patients by name..."
+        value={searchTerm}
+        onChange={handleSearch}
+      />
       {loading ? <p>Loading...</p> : null}
 
-      {patients.map((patient: any) => (
-        <Patient key={patient._id} patient={patient} />
+      {filteredPatients.map((patient) => (
+        <Patient patient={patient} />
       ))}
     </div>
   );
