@@ -112,11 +112,19 @@ function Page({ params, searchParams }: any) {
           {patientData.emergencyContact?.phoneNumber}
         </p>
       </div>
+      <div className="flex gap-4 print:hidden">
       <Link href={`/admin/patients/edit/${patientData.userId._id}`} className="mt-2">
         <button className="hover:bg-light border-primary border rounded-lg text-white px-3 py-1 bg-primary">
           Edit
         </button>
       </Link>
+
+        <button onClick={()=>{
+          window.print();
+        }} className="hover:bg-light mt-2 border-primary border rounded-lg text-white px-3 py-1 bg-primary">
+          Print
+        </button>
+      </div>
     </div>
     </div>
   );
