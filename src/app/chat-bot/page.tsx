@@ -115,8 +115,8 @@ const ChatBot: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-green-200">
-      <div className="bg-white p-8 rounded-md shadow-md">
+    <div className="flex justify-center items-center h-screen bg-blurblue">
+      <div className="bg-white flex flex-col h-fit w-[400px] p-10 rounded-xl gap-3 items-center">
         {finalSolution ? (
           <div>
             <h2 className="text-2xl font-bold mb-4">Final Solution</h2>

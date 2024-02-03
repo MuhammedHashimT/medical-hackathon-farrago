@@ -13,9 +13,10 @@ interface StepTwoProps {
   handleChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   handleNext: () => void;
   handlePrevious: () => void;
+  handleNumberChange : any ;
 }
 
-const StepTwo: React.FC<StepTwoProps> = ({ formData, handleChange, handleNext, handlePrevious }) => {
+const StepTwo: React.FC<StepTwoProps> = ({ formData, handleChange, handleNext, handlePrevious  , handleNumberChange }) => {
   return (
     <div className="bg-blurblue flex flex-col justify-center items-center gap-4 h-screen bg-contain p-20">
     <h2 className="text-center text-[40px] font-extrabold">
@@ -23,8 +24,8 @@ const StepTwo: React.FC<StepTwoProps> = ({ formData, handleChange, handleNext, h
     </h2>
     <div className="flex flex-col w-96 gap-5 text-center">
 
-      <input type="number" className='px-3 py-2 rounded-lg border hover:border-smoke' name="height" value={formData.height} onChange={handleChange} placeholder="Height" />
-      <input className='px-3 py-2 rounded-lg border hover:border-smoke' type="number"  name="weight" value={formData.weight} onChange={handleChange} placeholder="Weight" />
+      <input type="number" className='px-3 py-2 rounded-lg border hover:border-smoke' name="height" value={formData.height} onChange={handleNumberChange} placeholder="Height" />
+      <input className='px-3 py-2 rounded-lg border hover:border-smoke' type="number"  name="weight" value={formData.weight} onChange={handleNumberChange} placeholder="Weight" />
       
       <input className='px-3 py-2 rounded-lg border hover:border-smoke' type="date" name="dob" value={formData.dob} onChange={handleChange} placeholder="Date of Birth" />
       <select className='px-3 py-2 rounded-lg border hover:border-smoke' name="gender" value={formData.gender} onChange={handleChange}>
