@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 
 function Page({ params, searchParams }: any) {
   const [patientData, setPatientData] = useState<any>(null);
+  console.log(patientData);
+  
 
   const getMyData = async () => {
     try {
@@ -98,7 +100,7 @@ function Page({ params, searchParams }: any) {
           {patientData.emergencyContact.phoneNumber}
         </p>
       </div>
-      <Link href={`/edit-profile/${patientData.userId._id}`} className="mt-4">
+      <Link href={`/admin/patients/edit/${patientData.userId._id}`} className="mt-4">
         <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
           Edit
         </button>
