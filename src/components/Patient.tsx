@@ -8,8 +8,8 @@ const PatientCard = ({ patient }: any) => {
   };
 
   return (
-    <div className="bg-smoke p-4 rounded-md m-2 cursor-pointer" onClick={toggleModal}>
-      <h2 className="text-xl font-semibold bg-primary py-1 text-white rounded-xl">{`${patient.userId.firstName} ${patient.userId.lastName}`}</h2>
+    <div className="bg-white border border-gray-200 p-4 rounded-xl hover:border-smoke cursor-pointer" onClick={toggleModal}>
+      <h2 className="text-xl font-bold py-1 text-primary rounded-xl">{`${patient.userId.firstName} ${patient.userId.lastName}`}</h2>
       <p className="text-gray-600 text-sm">{`Username: ${patient.userId.username}`}</p>
       <p className="text-gray-600 text-sm">{`Email: ${patient.email}`}</p>
       {showModal && (

@@ -30,7 +30,7 @@ const Patients = () => {
   });
 
   return (
-    <div className="bg-blurblue flex flex-col justify-center items-center gap-4 h-screen bg-contain p-20">
+    <div className="bg-blurblue flex flex-col justify-center items-center gap-4 min-h-screen bg-cover p-20">
       <h2 className="text-center text-[40px] font-extrabold">
         <span className="text-primary">Patients</span> Table
       </h2>
