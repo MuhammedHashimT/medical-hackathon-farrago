@@ -1,16 +1,17 @@
 "use client";
 import Axios from "@/utils/Axios";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-function Page({ params, searchParams }: any) {
+function EditPage({ params, searchParams }: any) {
   const [patientData, setPatientData] = useState<any>(null);
+  const [formData, setFormData] = useState(patientData);
 
   const getMyData = async () => {
     try {
       let token = localStorage.getItem("token");
       let response = await Axios.post("/profiles/my-data", { token });
       setPatientData(response.data);
+      setFormData(response.data); // Set form data with initial patient data
     } catch (error: any) {
       console.log(error.response.data);
     }
@@ -20,91 +21,72 @@ function Page({ params, searchParams }: any) {
     getMyData();
   }, []);
 
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      // Handle form submission and update patient data
+      console.log(formData);
+      // await Axios.post("/profiles/update", formData);
+      // Show success message or redirect to another page
+    } catch (error: any) {
+      console.log(error.response.data);
+      // Show error message
+    }
+  };
+
   if (!patientData) {
     return <div className="p-4">Loading...</div>;
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Patient Information</h1>
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <p className="text-gray-800">
-            <span className="font-semibold">Email:</span> {patientData.email}
-          </p>
-          <p className="text-gray-800">
-            <span className="font-semibold">Phone Number:</span>{" "}
-            {patientData.phoneNumber}
-          </p>
-          <p className="text-gray-800">
-            <span className="font-semibold">Address:</span>{" "}
-            {patientData.address}
-          </p>
-          <p className="text-gray-800">
-            <span className="font-semibold">Country:</span>{" "}
-            {patientData.country}
-          </p>
-          <p className="text-gray-800">
-            <span className="font-semibold">State:</span> {patientData.state}
-          </p>
+    <div className="flex min-h-screen bg-blurblue p-20 items-center justify-center bg-cover">
+      <div
+        className="bg-white flex flex-col h-fit w-[800px] p-10 rounded-xl gap-3 items-center"
+      >
+        <div className="w-16">
+          <img
+            className="object-contain cursor-pointer"
+            src="/logo/logo-only.png"
+            alt="Logo"
+          />
         </div>
-        <div>
-          <p className="text-gray-800">
-            <span className="font-semibold">Blood Group:</span>{" "}
-            {patientData.bloodGroup}
-          </p>
-          <p className="text-gray-800">
-            <span className="font-semibold">Height:</span> {patientData.height}
-          </p>
-          <p className="text-gray-800">
-            <span className="font-semibold">Weight:</span> {patientData.weight}
-          </p>
-          <p className="text-gray-800">
-            <span className="font-semibold">Date of Birth:</span>{" "}
-            {new Date(patientData.dob).toLocaleDateString()}
-          </p>
-          <p className="text-gray-800">
-            <span className="font-semibold">Gender:</span> {patientData.gender}
-          </p>
-        </div>
-      </div>
-      <div className="mt-4">
-        <p className="text-gray-800">
-          <span className="font-semibold">Allergies:</span>{" "}
-          {patientData.allergies.join(", ")}
-        </p>
-        <p className="text-gray-800">
-          <span className="font-semibold">Medications:</span>{" "}
-          {patientData.medications.join(", ")}
-        </p>
-        <p className="text-gray-800">
-          <span className="font-semibold">Surgeries:</span>{" "}
-          {patientData.surgeries.join(", ")}
-        </p>
-        <p className="text-gray-800">
-          <span className="font-semibold">Medical History:</span>{" "}
-          {patientData.medicalHistory}
-        </p>
-        <p className="text-gray-800">
-          <span className="font-semibold">Emergency Contact Name:</span>{" "}
-          {patientData.emergencyContact.name}
-        </p>
-        <p className="text-gray-800">
-          <span className="font-semibold">Emergency Contact Relationship:</span>{" "}
-          {patientData.emergencyContact.relationship}
-        </p>
-        <p className="text-gray-800">
-          <span className="font-semibold">Emergency Contact Phone Number:</span>{" "}
-          {patientData.emergencyContact.phoneNumber}
-        </p>
-      </div>
-      <Link href={`/edit-profile/${patientData.userId._id}`} className="mt-4">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
-          Edit
+        <h1 className="text-center font-semibold text-2xl">
+          Edit <span className="font-extrabold text-primary">Details</span>
+        </h1>
+      <form onSubmit={handleSubmit}>
+        <div className="grid grid-cols-2 gap-3">
+        {Object.entries(formData).map(([key, value]) => 
+        (
+          <div key={key}>
+            <label htmlFor={key} className=" text-gray-700 font-bold mb-2">
+              {key.charAt(0).toUpperCase() + key.slice(1)}:
+            </label>
+            <input
+              type="text"
+              id={key}
+              name={key}
+              value={`${value}`}
+              onChange={handleChange}
+              className="border rounded-md p-2 w-full"
+            />
+          </div>
+        ))
+          }</div>
+        <button
+          type="submit"
+          className="hover:bg-light mt-4 w-full border-primary border rounded-lg text-white px-3 py-2 bg-primary"
+        >
+          Save Changes
         </button>
-      </Link>
+      </form>
+    </div>
     </div>
   );
 }
 
-export default Page;
+export default EditPage;

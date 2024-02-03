@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 
 function Page({ params, searchParams }: any) {
   const [patientData, setPatientData] = useState<any>(null);
+  console.log(patientData);
+  
 
   const getMyData = async () => {
     try {
@@ -25,11 +27,23 @@ function Page({ params, searchParams }: any) {
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Patient Information</h1>
+    <div className="flex w-screen h-screen bg-blurblue items-center justify-center bg">
+      <div
+        className="bg-white flex flex-col h-fit w-96 p-10 rounded-xl gap-3 items-center"
+      >
+        <div className="w-16">
+          <img
+            className="object-contain cursor-pointer"
+            src="/logo/logo-only.png"
+            alt="Logo"
+          />
+        </div>
+        <h1 className="text-center font-semibold text-2xl">
+          Patient <span className="font-extrabold text-primary">Details</span>
+        </h1>
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <p className="text-gray-800">
+          <p className="text-gray-800 break-words">
             <span className="font-semibold">Email:</span> {patientData.email}
           </p>
           <p className="text-gray-800">
@@ -87,22 +101,23 @@ function Page({ params, searchParams }: any) {
         </p>
         <p className="text-gray-800">
           <span className="font-semibold">Emergency Contact Name:</span>{" "}
-          {patientData.emergencyContact.name}
+          {patientData.emergencyContact?.name}
         </p>
         <p className="text-gray-800">
           <span className="font-semibold">Emergency Contact Relationship:</span>{" "}
-          {patientData.emergencyContact.relationship}
+          {patientData.emergencyContact?.relationship}
         </p>
         <p className="text-gray-800">
           <span className="font-semibold">Emergency Contact Phone Number:</span>{" "}
-          {patientData.emergencyContact.phoneNumber}
+          {patientData.emergencyContact?.phoneNumber}
         </p>
       </div>
-      <Link href={`/edit-profile/${patientData.userId._id}`} className="mt-4">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+      <Link href={`/admin/patients/edit/${patientData.userId._id}`} className="mt-2">
+        <button className="hover:bg-light border-primary border rounded-lg text-white px-3 py-1 bg-primary">
           Edit
         </button>
       </Link>
+    </div>
     </div>
   );
 }
