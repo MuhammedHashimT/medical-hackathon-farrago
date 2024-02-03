@@ -73,11 +73,11 @@ const StepOne: React.FC<StepOneProps> = ({
         <div className="w-2 h-2 rounded-full bg-gray-400"></div>
       </div>
       <button
-                className="hover:bg-light border-primary border rounded-lg text-white px-3 py-1 bg-primary"
-
-      onClick={handleNext}>Next</button>
-
-
+        className="hover:bg-light border-primary border rounded-lg text-white px-3 py-1 bg-primary"
+        onClick={handleNext}
+      >
+        Next
+      </button>
     </div>
   );
 };
