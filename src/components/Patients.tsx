@@ -30,10 +30,14 @@ const Patients = () => {
   });
 
   return (
-    <div>
-      <p>All Patients</p>
+    <div className="bg-blurblue flex flex-col justify-center items-center gap-4 h-screen bg-contain p-20">
+      <h2 className="text-center text-[40px] font-extrabold">
+        <span className="text-primary">Patients</span> Table
+      </h2>
+      <div className="flex flex-col w-96 gap-5 text-center">
       <input
         type="text"
+        className="px-3 py-2 rounded-lg border hover:border-smoke"
         placeholder="Search Patients by name..."
         value={searchTerm}
         onChange={handleSearch}
@@ -43,6 +47,7 @@ const Patients = () => {
       {filteredPatients.map((patient) => (
         <Patient patient={patient} />
       ))}
+    </div>
     </div>
   );
 };
