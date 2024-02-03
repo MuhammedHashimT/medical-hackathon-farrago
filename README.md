@@ -35,7 +35,7 @@ To get started with the Hospital Management Website, follow these steps:
 
 2 . **Install Dependencies**: Navigate to the project directory and install dependencies using npm or yarn:
 
- 
+   ```node
    cd hospital-management-website
    npm install 
 
@@ -43,7 +43,7 @@ To get started with the Hospital Management Website, follow these steps:
 
 4. **Run the Application**: Start the development server by running:
 
-
+    ```node
     npm start
 
 The website should now be accessible at http://localhost:3000.
