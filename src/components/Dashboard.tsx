@@ -31,7 +31,7 @@ function Dashboard() {
       </h2>
       {loading && <h1>Loading...</h1>}
       <h2 className="text-xl font-semibold mb-4">
-        Health Details and Personal Information{" "}
+        Health Details and Personal Information
       </h2>
       {data && (
         <div className="flex">
@@ -82,7 +82,7 @@ function Dashboard() {
               </p>
             </div>
           </div>
-          <div className="bg-white border flex flex-col justify-center border-gray-200 rounded-xl p-10">
+          <div className="bg-white border flex gap-2 flex-col justify-center border-gray-200 rounded-xl p-10">
             <img src="/img/robot.gif" className="w-56"/>
             <Link
               href={"/chat-bot"}
