@@ -44,12 +44,26 @@ function EditPage({ params, searchParams }: any) {
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Edit Page</h1>
+    <div className="flex min-h-screen bg-blurblue p-20 items-center justify-center bg-cover">
+      <div
+        className="bg-white flex flex-col h-fit w-[800px] p-10 rounded-xl gap-3 items-center"
+      >
+        <div className="w-16">
+          <img
+            className="object-contain cursor-pointer"
+            src="/logo/logo-only.png"
+            alt="Logo"
+          />
+        </div>
+        <h1 className="text-center font-semibold text-2xl">
+          Edit <span className="font-extrabold text-primary">Details</span>
+        </h1>
       <form onSubmit={handleSubmit}>
-        {Object.entries(formData).map(([key, value]) => (
-          <div key={key} className="mb-4">
-            <label htmlFor={key} className="block text-gray-700 font-bold mb-2">
+        <div className="grid grid-cols-2 gap-3">
+        {Object.entries(formData).map(([key, value]) => 
+        (
+          <div key={key}>
+            <label htmlFor={key} className=" text-gray-700 font-bold mb-2">
               {key.charAt(0).toUpperCase() + key.slice(1)}:
             </label>
             <input
@@ -61,14 +75,16 @@ function EditPage({ params, searchParams }: any) {
               className="border rounded-md p-2 w-full"
             />
           </div>
-        ))}
+        ))
+          }</div>
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+          className="hover:bg-light mt-4 w-full border-primary border rounded-lg text-white px-3 py-2 bg-primary"
         >
           Save Changes
         </button>
       </form>
+    </div>
     </div>
   );
 }

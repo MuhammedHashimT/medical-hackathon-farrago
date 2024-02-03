@@ -11,6 +11,8 @@ const Patients = () => {
   useEffect(() => {
     Axios.get("/profiles")
       .then((res) => {
+        console.log(res.data?.profiles);
+        
         setPatients(res.data?.profiles);
         setLoading(false);
       })
