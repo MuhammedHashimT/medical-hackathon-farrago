@@ -79,59 +79,60 @@ const StepThree: React.FC<StepThreeProps> = ({
           </div>
         </div>
         <div>
-          <h3>Medications</h3>
+          <h3 className="font-semibold text-lg mb-2">Medications</h3>
           {/* {['aspirin', 'ibuprofen', 'acetaminophen', 'antibiotics', 'antidepressants', 'insulin', 'other'].map((medication, index) => (
           <label key={index}>
             <input  type="checkbox" name="medications" value={medication} checked={formData.medications.includes(medication)} onChange={handleCheckboxChange} />
             {medication}
           </label>
         ))} */}
-
-          {[
-            "aspirin",
-            "ibuprofen",
-            "acetaminophen",
-            "antibiotics",
-            "antidepressants",
-            "insulin",
-            "other",
-          ].map((medication, index) => (
-            <div
-              key={index}
-              className={` ${
-                formData.medications.includes(medication)
-                  ? "bg-gray-200"
-                  : "bg-white"
-              } border-2 border-gray-300 p-2 m-2 cursor-pointer hover:bg-gray-200 rounded-md`}
-              onClick={(e) => {
-                if (formData.medications.includes(medication)) {
-                  // Remove from formData
-                  const newMedications = formData.medications.filter(
-                    (a) => a !== medication
-                  );
-                  handleChange({
-                    target: { name: "medications", value: newMedications },
-                  } as any);
-                } else {
-                  // Add to formData
-                  handleChange({
-                    target: {
-                      name: "medications",
-                      value: [...formData.medications, medication],
-                    },
-                  } as any);
-                }
-              }}
-            >
-              {medication}
-            </div>
-          ))}
+          <div className="flex flex-col gap-2">
+            {[
+              "aspirin",
+              "ibuprofen",
+              "acetaminophen",
+              "antibiotics",
+              "antidepressants",
+              "insulin",
+              "other",
+            ].map((medication, index) => (
+              <div
+                key={index}
+                className={` ${
+                  formData.medications.includes(medication)
+                    ? "bg-smoke border-smoke hover:border-light"
+                    : "bg-white hover:border-smoke border-gray-100"
+                } border-2  px-3 py-2 cursor-pointer hover:bg-smoke  rounded-xl transition-colors duration-100`}
+                onClick={(e) => {
+                  if (formData.medications.includes(medication)) {
+                    // Remove from formData
+                    const newMedications = formData.medications.filter(
+                      (a) => a !== medication
+                    );
+                    handleChange({
+                      target: { name: "medications", value: newMedications },
+                    } as any);
+                  } else {
+                    // Add to formData
+                    handleChange({
+                      target: {
+                        name: "medications",
+                        value: [...formData.medications, medication],
+                      },
+                    } as any);
+                  }
+                }}
+              >
+                {medication}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="flex gap-2 my-1">
         <div className="w-2 h-2 rounded-full bg-gray-400"></div>
-        <div className="w-2 h-2 rounded-full bg-primary"></div>
         <div className="w-2 h-2 rounded-full bg-gray-400"></div>
+        <div className="w-2 h-2 rounded-full bg-primary"></div>
         <div className="w-2 h-2 rounded-full bg-gray-400"></div>
       </div>
 
