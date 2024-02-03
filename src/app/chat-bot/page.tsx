@@ -1,7 +1,5 @@
 "use client";
 import React, { useState } from "react";
-
-// Define predefined medical questions and answers
 const medicalQuestionsAndAnswers: { [key: string]: string[] } = {
   "Do you have any allergies?": ["Peanuts", "Shellfish", "None"],
   "Are you currently taking any medications?": [
@@ -81,7 +79,15 @@ const ChatBot: React.FC = () => {
 
         case "Do you have any existing medical conditions?":
           if (response !== "None") {
-            solution += " Consult your healthcare provider regularly.";
+            if (response === "Hypertension") {
+              requiredMedications.push("Antihypertensive medication");
+              solution +=
+                " Monitor blood pressure regularly and follow a low-sodium diet.";
+            } else if (response === "Diabetes") {
+              requiredMedications.push("Insulin or oral hypoglycemic agents");
+              solution +=
+                " Monitor blood sugar levels regularly and follow a diabetic diet.";
+            }
           }
           break;
 
@@ -94,6 +100,7 @@ const ChatBot: React.FC = () => {
     // Check if there are required medications or additional medical advice
     if (
       requiredMedications.length > 0 ||
+      solution.includes("Monitor") ||
       solution.includes("Consult your healthcare provider")
     ) {
       healthCondition = "Requires Attention";
