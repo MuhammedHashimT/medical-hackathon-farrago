@@ -45,7 +45,7 @@ export const UserContextProvider = ({ children }: any) => {
         }
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
       });
   }, []);
   return (
