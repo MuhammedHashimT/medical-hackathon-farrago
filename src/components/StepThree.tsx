@@ -16,17 +16,6 @@ interface StepThreeProps {
 
 const StepThree: React.FC<StepThreeProps> = ({ formData, handleChange, handleNext, handlePrevious }) => {
 
-  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value, checked } = e.target;
-    if (formData.allergies.includes(value)) {
-      // Add the value to the array if checked
-      handleChange({ target: { name, value: [...(formData as any)[name], value] } } as any);
-    } else {
-      // Remove the value from the array if unchecked
-      handleChange({ target: { name, value: (formData as any)[name].filter((item : any) => item !== value) } } as ChangeEvent<HTMLSelectElement>);
-    }
-  };
-
   return (
     <div>
       <h2>Step 3: Medical Details</h2>
