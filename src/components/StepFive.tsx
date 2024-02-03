@@ -35,7 +35,7 @@ const StepFive: React.FC<StepFiveProps> = ({
         <h2 className="text-center text-[40px] font-extrabold">
           <span className="text-primary">Health</span> Metrics
         </h2>
-        <div className="flex flex-col w-96 gap-5 text-center">
+        <div className="flex flex-col w-96 gap-3 text-center">
           <input
             type="number"
             name="bloodPressure.systolic"
