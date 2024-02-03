@@ -6,6 +6,7 @@ import StepTwo from '@/components/StepTwo';
 import StepThree from '@/components/StepThree';
 import StepFour from '@/components/StepFour';
 import Axios from '@/utils/Axios';
+import StepFive from './StepFive';
 
 const Details: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -97,7 +98,10 @@ const Details: React.FC = () => {
         <StepThree formData={formData} handleChange={handleChange} handleNext={handleNext} handlePrevious={handlePrevious} />
       )}
       {step === 4 && (
-        <StepFour formData={formData} handleChange={handleFourChange} handleSubmit={handleSubmit} handlePrevious={handlePrevious} />
+        <StepFour formData={formData} handleChange={handleChange} handleNext={handleNext}  handlePrevious={handlePrevious} />
+      )}
+      {step === 5 && (
+        <StepFive formData={formData} handleChange={handleFourChange} handleSubmit={handleSubmit} handlePrevious={handlePrevious} />
       )}
     </div>
   );
