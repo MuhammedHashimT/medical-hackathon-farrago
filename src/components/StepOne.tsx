@@ -12,12 +12,14 @@ interface StepOneProps {
   };
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleNext: () => void;
+  handleNumberChange : any
 }
 
 const StepOne: React.FC<StepOneProps> = ({
   formData,
   handleChange,
   handleNext,
+  handleNumberChange
 }) => {
   return (
     <div className="bg-blurblue flex flex-col justify-center items-center gap-4 h-screen bg-contain p-20">
@@ -43,10 +45,10 @@ const StepOne: React.FC<StepOneProps> = ({
         />
         <input
           className="px-3 py-2 rounded-lg border hover:border-smoke"
-          type="tel"
+          type="number"
           name="phone"
           value={formData.phone}
-          onChange={handleChange}
+          onChange={handleNumberChange}
           placeholder="Phone"
         />
         <input
