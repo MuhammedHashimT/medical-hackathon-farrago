@@ -71,8 +71,10 @@ function EditPage({ params, searchParams }: any) {
             {/* Check if the value is an object */}
             {typeof value === "object" ? (
               // If it's an object, map over its entries
-              Object.entries(value as any).map(([k, v]) => (
-                <div key={k}>
+              <div className="flex">
+                
+             { Object.entries(value as any).map(([k, v]) => (
+                <div className="flex" key={k}>
                   <label htmlFor={k} className="text-gray-700 font-bold mb-2">
                     {k.charAt(0).toUpperCase() + k.slice(1)}:
                   </label>
@@ -86,6 +88,8 @@ function EditPage({ params, searchParams }: any) {
                   />
                 </div>
               ))
+}
+              </div>
             ) : (
               // If it's not an object, render a regular input
               <input
