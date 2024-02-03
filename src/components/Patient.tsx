@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState } from "react";
 
 const PatientCard = ({ patient }: any) => {
@@ -8,11 +9,15 @@ const PatientCard = ({ patient }: any) => {
   };
 
   return (
-    <div className="bg-smoke p-4 rounded-md m-2 cursor-pointer" onClick={toggleModal}>
+    <Link
+      href={`/admin/patients/${patient.userId._id}`}
+      className="bg-smoke p-4 rounded-md m-2 cursor-pointer"
+      onClick={toggleModal}
+    >
       <h2 className="text-xl font-semibold bg-primary py-1 text-white rounded-xl">{`${patient.userId.firstName} ${patient.userId.lastName}`}</h2>
       <p className="text-gray-600 text-sm">{`Username: ${patient.userId.username}`}</p>
       <p className="text-gray-600 text-sm">{`Email: ${patient.email}`}</p>
-      {showModal && (
+      {/* {showModal && (
         <>
           {" "}
           <p className="text-gray-600 text-sm">{`Blood Group: ${patient.bloodGroup}`}</p>
@@ -40,8 +45,8 @@ const PatientCard = ({ patient }: any) => {
           <p className="text-gray-600 text-sm">{`Fasting Blood Sugar Level: ${patient.bloodSugarLevel?.fasting}`}</p>
           <p className="text-gray-600 text-sm">{`Post-Prandial Blood Sugar Level: ${patient.bloodSugarLevel?.postPrandial}`}</p>
         </>
-      )}
-    </div>
+      )} */}
+    </Link>
   );
 };
 
