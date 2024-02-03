@@ -11,6 +11,7 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const { setUser, user } = useUserContext();
   const router = useRouter();
@@ -24,11 +25,13 @@ export default function Register() {
       firstName: FirstName,
       lastName: LastName,
       confirmPassword: confirmPassword,
+      email: email,
+      role : "user"
     })
       .then((data) => {
         console.log(data);
         
-        if (data?.data?.user?.username) {
+        if (data?.data) {
           setUser(data.data);
           router.push("/details");
         }
@@ -75,6 +78,14 @@ export default function Register() {
           type="text"
           placeholder="Last Name"
           onChange={(e: any) => setLastName(e.target.value)}
+          className="px-3 py-2 rounded-lg border focus:border-primary"
+          required
+        />
+
+       <input
+          type="email"
+          placeholder="Email"
+          onChange={(e: any) => setEmail(e.target.value)}
           className="px-3 py-2 rounded-lg border focus:border-primary"
           required
         />

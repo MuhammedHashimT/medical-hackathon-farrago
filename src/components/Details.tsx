@@ -49,6 +49,15 @@ const Details: React.FC = () => {
     }));
   };
 
+
+  const handleNumberChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: parseInt(value)
+    }));
+  };
+
   const handleFourChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     const [parentKey, childKey] = name.split('.'); // Split the nested key
@@ -89,10 +98,10 @@ const Details: React.FC = () => {
   return (
     <div>
       {step === 1 && (
-        <StepOne formData={formData} handleChange={handleChange} handleNext={handleNext} />
+        <StepOne handleNumberChange={handleNumberChange} formData={formData} handleChange={handleChange} handleNext={handleNext} />
       )}
       {step === 2 && (
-        <StepTwo formData={formData} handleChange={handleChange} handleNext={handleNext} handlePrevious={handlePrevious} />
+        <StepTwo formData={formData} handleNumberChange={handleNumberChange} handleChange={handleChange} handleNext={handleNext} handlePrevious={handlePrevious} />
       )}
       {step === 3 && (
         <StepThree formData={formData} handleChange={handleChange} handleNext={handleNext} handlePrevious={handlePrevious} />
