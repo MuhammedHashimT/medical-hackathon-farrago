@@ -13,7 +13,11 @@ const AdminDashboard = () => {
                 <h2>Patients</h2>
                 <p>Manage Patients</p>
             </div>
-            <div className="bg-gray-200 p-4 rounded-md">
+            <div onClick={
+                () => {
+                    router.push('/admin/patients')
+                }
+             }  className="bg-gray-200 p-4 rounded-md cursor-pointer">
                 All Patients
             </div>
             <div onClick={
