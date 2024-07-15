@@ -11,7 +11,7 @@ function page() {
             Medical <br /> Companion
           </h1>
           <div className="flex gap-2 font-semibold justify-center lg:justify-start mt-8">
-            <a href="">
+            <a href="https://medical-hackathon-farrago.vercel.app/chat-bot">
               <button className="hover:bg-light lg:text-lg rounded-lg text-white px-3 py-2 bg-primary border-primary">
                 Get Started
               </button>
